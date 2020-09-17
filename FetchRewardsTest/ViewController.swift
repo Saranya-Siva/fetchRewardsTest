@@ -27,7 +27,10 @@ class ViewController: UIViewController {
                 self.parse(jsonData: data)
             case .failure(let error):
                 //alert the user error fetching data
-                self.showAlert(message : error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.showAlert(message : error.localizedDescription)
+                }
+                
             }
         }
     }
@@ -64,7 +67,9 @@ class ViewController: UIViewController {
             processData(with : decodedData)
             
         } catch {
-            showAlert(message: error.localizedDescription)
+            DispatchQueue.main.async {
+                self.showAlert(message : error.localizedDescription)
+            }
         }
     }
     
